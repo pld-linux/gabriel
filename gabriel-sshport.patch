@@ -1,0 +1,52 @@
+--- client/gabriel.c~	2009-07-04 19:55:19.000000000 +0200
++++ client/gabriel.c	2009-07-04 21:28:20.000000000 +0200
+@@ -30,6 +30,7 @@
+ 
+ #define DEFAULT_TCP_PORT 1337
+ #define DEFAULT_ADDRESS "localhost"
++#define DEFAULT_SSH_PORT 22
+ 
+ gboolean shutting_down;
+ 
+@@ -247,6 +248,7 @@
+ 
+ SSH_SESSION *
+ gabriel_session_create (gchar * host,
++    			gint ssh_port,
+                         gchar * username,
+                         gchar * password)
+ {
+@@ -256,6 +258,7 @@
+     
+     ssh_options = ssh_options_new ();
+     ssh_options_set_host (ssh_options, host);
++    ssh_options_set_port (ssh_options, ssh_port);
+     ssh_options_set_username (ssh_options, username);
+     ssh_options_set_ssh_dir (ssh_options, "%s/.ssh");
+     ssh_options_set_identity (ssh_options, "id_dsa");
+@@ -323,6 +326,7 @@
+     GOptionContext *context;
+     GError *error = NULL;
+     gchar *host = DEFAULT_ADDRESS;
++    gint ssh_port = DEFAULT_SSH_PORT;
+     gchar *username = NULL;
+     gchar *password = NULL;
+     gchar *local_address = DEFAULT_ADDRESS;
+@@ -331,6 +335,8 @@
+     GOptionEntry entries[] = {
+ 	{"host", 'h', 0, G_OPTION_ARG_STRING, &host,
+ 	 "Hostname or IP of the remote host", "HOSTNAME"},
++	{"sshport", 'P', 0, G_OPTION_ARG_STRING, &ssh_port,
++	 "Port to connect to on the remote host", "SSHPORT"},
+ 	{"username", 'u', 0, G_OPTION_ARG_STRING, &username,
+ 	 "Username on the remote host", "USERNAME"},
+ 	{"password", 'p', 0, G_OPTION_ARG_STRING, &password,
+@@ -355,7 +361,7 @@
+     sig_action.sa_handler = signal_handler;
+     sigaction (SIGINT, &sig_action, NULL);
+    
+-    ssh_session = gabriel_session_create (host, username, password);
++    ssh_session = gabriel_session_create (host, ssh_port, username, password);
+     if (ssh_session == NULL) {
+         goto beach;
+     }
