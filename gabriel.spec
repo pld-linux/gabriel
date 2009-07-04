@@ -9,13 +9,14 @@ Summary:	Secure remote D-Bus
 Summary(pl.UTF-8):	Bezpieczny zdalny D-Bus
 Name:		gabriel
 Version:	0.1
-Release:	0.1
+Release:	0.2
 License:	GPL v2
 Group:		Applications
 Source0:	http://dl.sourceforge.net/gabriel/%{name}-%{version}.tar.gz
 # Source0-md5:	136d971aaf4917c31bfdc25c3f713091
 # Very ugly hack. See TODO file.
 Patch0:		%{name}-passphrase.patch
+Patch1:		%{name}-sshport.patch
 URL:		http://gabriel.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -35,6 +36,7 @@ Bezpieczny zdalny D-Bus.
 %setup -q
 
 %patch0 -p0
+%patch1 -p0
 
 %build
 # Is it correct?
