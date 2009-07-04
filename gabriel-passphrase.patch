@@ -1,0 +1,11 @@
+--- client/gabriel.c~	2009-07-04 17:20:34.000000000 +0200
++++ client/gabriel.c	2009-07-04 17:23:09.000000000 +0200
+@@ -274,7 +274,7 @@
+ 	goto finland;
+     }
+ 
+-    ret = ssh_userauth_autopubkey (ssh_session);
++    ret = ssh_userauth_autopubkey (ssh_session, "");
+     
+     if (ret != SSH_AUTH_SUCCESS) {
+ 	if (ret == SSH_AUTH_DENIED) {
