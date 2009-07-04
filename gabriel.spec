@@ -1,10 +1,16 @@
 #
+# TODO:
+# - gabriel-passphrase.patch:
+#   ssh_userauth_autopubkey from libssh takes two arguments. The second one is
+#   public key passphrase. This patch asumes that passphrase is empty so it
+#   won't work with encrypted public keys. It should call pinentry or something.
+#   I have no idea.
 Summary:	Secure remote D-Bus
 Summary(pl.UTF-8):	Bezpieczny zdalny D-Bus
 Name:		gabriel
 Version:	0.1
 Release:	0.1
-License:	- (enter GPL/GPL v2/GPL v3/LGPL/BSD/BSD-like/other license name here)
+License:	GPL v2
 Group:		Applications
 Source0:	http://dl.sourceforge.net/gabriel/%{name}-%{version}.tar.gz
 # Source0-md5:	136d971aaf4917c31bfdc25c3f713091
