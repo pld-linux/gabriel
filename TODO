@@ -1,6 +1,0 @@
-gabriel-passphrase.patch:
-
-  ssh_userauth_autopubkey from libssh takes two arguments. The second one is
-  public key passphrase. This patch asumes that passphrase is empty so it
-  won't work with encrypted public keys. It should call pinentry or something.
-  I have no idea.
