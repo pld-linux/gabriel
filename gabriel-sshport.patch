@@ -12,7 +12,7 @@
  
  SSH_SESSION *
  gabriel_session_create (gchar * host,
-+    			gint ssh_port,
++    			guint ssh_port,
                          gchar * username,
                          gchar * password)
  {
@@ -28,7 +28,7 @@
      GOptionContext *context;
      GError *error = NULL;
      gchar *host = DEFAULT_ADDRESS;
-+    gint ssh_port = DEFAULT_SSH_PORT;
++    guint ssh_port = DEFAULT_SSH_PORT;
      gchar *username = NULL;
      gchar *password = NULL;
      gchar *local_address = DEFAULT_ADDRESS;
@@ -36,7 +36,7 @@
      GOptionEntry entries[] = {
  	{"host", 'h', 0, G_OPTION_ARG_STRING, &host,
  	 "Hostname or IP of the remote host", "HOSTNAME"},
-+	{"sshport", 'P', 0, G_OPTION_ARG_STRING, &ssh_port,
++	{"sshport", 'P', 0, G_OPTION_ARG_INT, &ssh_port,
 +	 "Port to connect to on the remote host", "SSHPORT"},
  	{"username", 'u', 0, G_OPTION_ARG_STRING, &username,
  	 "Username on the remote host", "USERNAME"},
