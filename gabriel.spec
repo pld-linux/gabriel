@@ -5,6 +5,14 @@
 #   public key passphrase. This patch asumes that passphrase is empty so it
 #   won't work with encrypted public keys. It should call pinentry or something.
 #   I have no idea.
+#
+# NOTE:
+# - it won't work in most common configurations. DBUS authentication is really
+#   strange. It assumes that client and server runs on the same host or at
+#   least shares the home directory. The only use for this program I can
+#   imagine is terminal server, thin clients uses /home from terminal server
+#   via NFS, and application on client that want to talk to dbus on server.
+#
 Summary:	Secure remote D-Bus
 Summary(pl.UTF-8):	Bezpieczny zdalny D-Bus
 Name:		gabriel
