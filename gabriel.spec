@@ -28,8 +28,9 @@ Patch1:		%{name}-sshport.patch
 URL:		http://gabriel.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib-devel
+BuildRequires:	glib2-devel
 BuildRequires:	libssh-devel
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
